@@ -1,0 +1,34 @@
+{
+  "name": "jquery.bipbop",
+  "version": "0.0.2",
+  "authors": [
+    "Lucas Fernando Amorim <lf.amorim@bipbop.com.br>"
+  ],
+  "description": "Comunicação com a BIPBOP através do jQuery",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "bipbop",
+    "webservice",
+    "cpf",
+    "cnpj",
+    "sintegra",
+    "inpi",
+    "tribunais de justiça",
+    "oab",
+    "crea"
+  ],
+  "license": "MIT",
+  "homepage": "http://irql.bipbop.com.br/api/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}

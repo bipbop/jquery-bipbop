@@ -1,0 +1,31 @@
+{
+  "name": "jquery.bipbop",
+  "version": "1.0.0",
+  "description": "Comunicação com a BIPBOP através do jQuery",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bipbop/jquery.bipbop.git"
+  },
+  "keywords": [
+    "bipbop",
+    "webservice",
+    "cpf",
+    "cnpj",
+    "inpi",
+    "sintegra"
+  ],
+  "author": "Lucas Fernando Amorim <lf.amorim@bipbop.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bipbop/jquery.bipbop/issues"
+  },
+  "homepage": "https://github.com/bipbop/jquery.bipbop",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-uglify": "^1.2.0"
+  }
+}
