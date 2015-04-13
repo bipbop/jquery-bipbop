@@ -4,6 +4,7 @@
   "authors": [
     "Lucas Fernando Amorim <lf.amorim@bipbop.com.br>"
   ],
+  "main" : "dist/jquery.bipbop.js",
   "description": "Comunicação com a BIPBOP através do jQuery",
   "moduleType": [
     "globals"
