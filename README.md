@@ -1,7 +1,7 @@
 Consulta via AJAX usando API BIPBOP
 ==========================================
 
-[Exemplo](http://rawgithub.com/bipbop/consulta-cpf-ajax/master/sample.html "Exemplo de Implementação") de implementação da API BIPBOP via AJAX criado por Pedro Menezes em [artigo](http://pedromenezes.com/como-buscar-nomes-de-pessoas-fisicas-a-partir-de-cpfs-usando-a-api-do-bipbop "Busca de Nomes") para seu blog.
+BIPBOP é um Web Service onde você pode sincronizar informações de seu software com portais da internet.
 
 ### Porque Usar ###
 
