@@ -4,7 +4,7 @@
  * @type {string}
  * @default
  */
-var BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
+BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
 
 /**
  * O Plugin jQuery da BIPBOP
@@ -12,7 +12,7 @@ var BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
  * @external "jQuery.fn"
  * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
  */
-(function($) {
+(function ($) {
 
     /**
      * Permite requisitar a API BIPBOP
@@ -23,16 +23,18 @@ var BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
      * @see {@link http://api.jquery.com/jquery.ajax/}
      * @function external:"jQuery.fn".bipbop
      */
-    $.fn.bipbop = function(query, apiKey, parameters) {
+    $.fn.bipbop = function (query, apiKey, parameters, protocol) {
 
-        var protocol = document.location.protocol;
-        if (protocol != "http:" && protocol != "https:")
-            protocol = "http";
+        if (!protocol) {
+            protocol = document.location.protocol;
+            if (protocol !== "http:" && protocol !== "https:")
+                protocol = "http";
+        }
 
         return $.ajax($.extend({
             type: "GET",
             url: protocol + "//irql.bipbop.com.br/?q="
-                    + encodeURIComponent("USING 'JSONP' " + query) + "&apiKey="
+                    + encodeURIComponent(((typeof parameters.dataType !== "undefined" && !parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) ? "" : "USING 'JSONP' ") + query) + "&apiKey="
                     + encodeURIComponent(apiKey),
             dataType: "jsonp xml"
         }, parameters));
@@ -52,7 +54,7 @@ var BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
      * @param {exceptionCallback} callback Executa função em caso de erro
      * @function external:"jQuery.fn".bipbopAssert
      */
-    $.fn.bipbopAssert = function(ret, callback) {
+    $.fn.bipbopAssert = function (ret, callback) {
         headerException = $(ret).find("header exception");
         if (headerException.length) {
             callback(headerException.attr("source"), headerException.text());

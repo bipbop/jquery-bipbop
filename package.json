@@ -25,7 +25,12 @@
   },
   "homepage": "https://github.com/bipbop/jquery.bipbop",
   "devDependencies": {
+    "ansi-regex": "^1.1.1",
+    "clone": "^1.0.2",
+    "clone-stats": "0.0.1",
     "gulp": "^3.8.11",
-    "gulp-uglify": "^1.2.0"
+    "gulp-uglify": "^1.2.0",
+    "minimist": "^1.1.1",
+    "wrappy": "^1.0.1"
   }
 }
