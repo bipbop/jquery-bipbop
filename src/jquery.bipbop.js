@@ -46,6 +46,7 @@ BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
      * @callback exceptionCallback
      * @param {string} exceptionType
      * @param {string} exceptionMessage
+     * @param {int} exceptionCode
      */
 
     /**
@@ -55,13 +56,12 @@ BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
      * @function external:"jQuery.fn".bipbopAssert
      */
     $.fn.bipbopAssert = function (ret, callback) {
-        headerException = $(ret).find("header exception");
+        headerException = $(ret).find("BPQL > header > exception");
         if (headerException.length) {
-            callback(headerException.attr("source"), headerException.text());
+            callback(headerException.attr("source"), headerException.text(), parseInt(headerException.attr("code")));
             return true;
         }
         return false;
-
     };
 
 }(jQuery));
