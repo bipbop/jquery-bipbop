@@ -13,7 +13,7 @@ BIPBOP é um Web Service onde você pode sincronizar informações de seu softwa
 
 ### O que é preciso ###
 
- - [API da BipBop: Consulta CPF/CNPJ](http://irql.bipbop.com.br/api/)
+ - [API da BipBop: Consulta CPF/CNPJ](http://api.bipbop.com.br/)
  - [jQuery](http://jquery.com/)
 
 ## Sobre a BIPBOP ##

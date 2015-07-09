@@ -34,9 +34,9 @@ BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
         return $.ajax($.extend({
             type: "GET",
             url: protocol + "//irql.bipbop.com.br/?q="
-                    + encodeURIComponent(((typeof parameters.dataType !== "undefined" && !parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) ? "" : "USING 'JSONP' ") + query) + "&apiKey="
+                    + encodeURIComponent(((typeof parameters.dataType !== "undefined" && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) ? "USING 'JSONP' " : "") + query) + "&apiKey="
                     + encodeURIComponent(apiKey),
-            dataType: "jsonp xml"
+            dataType: "xml"
         }, parameters));
     };
 
