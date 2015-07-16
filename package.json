@@ -4,7 +4,8 @@
   "description": "Comunicação com a BIPBOP através do jQuery",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "./node_modules/mocha-phantomjs/bin/mocha-phantomjs -p ./node_modules/phantomjs/bin/phantomjs test/index.html"
+    "postinstall": "bower cache clean && bower install",
+    "test": "mocha-phantomjs test/index.html"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/bipbop/jquery.bipbop",
   "devDependencies": {
     "ansi-regex": "^1.1.1",
+    "bower": "^1.4.1",
     "clone": "^1.0.2",
     "clone-stats": "0.0.1",
     "gulp": "^3.8.11",

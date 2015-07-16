@@ -3,7 +3,7 @@
 
     describe('jquery.bipbop', function() {
         describe('bipbop', function() {
-            this.timeout(3000);
+            this.timeout(10000);
             it('deprecated call', function(done) {
                 $().bipbop("SELECT FROM 'INFO'.'INFO'", BIPBOP_FREE, {
                     success: function(doc) {
