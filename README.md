@@ -1,6 +1,8 @@
 Consulta via AJAX usando API BIPBOP
 ==========================================
 
+[![Build Status](https://travis-ci.org/bipbop/jquery.bipbop.svg)](https://travis-ci.org/bipbop/jquery.bipbop)
+
 BIPBOP é um Web Service onde você pode sincronizar informações de seu software com portais da internet.
 
 ### Porque Usar ###
