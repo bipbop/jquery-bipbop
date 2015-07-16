@@ -1,10 +1,12 @@
+'use strict';
+
 /**
  * Chave de API do plano gratuito, pode ser modificado no servidor.
  * @constant
  * @type {string}
  * @default
  */
-BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
+window.BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
 
 /**
  * O Plugin jQuery da BIPBOP
@@ -15,26 +17,41 @@ BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
 (function ($) {
 
     /**
+     * Alerta de função BIPBOP deprecada
+     */
+    var deprecated = function (message) {
+        if (window.console) {
+            console.log("BIPBOP-API-Deprecated :: " + message, "background: #222; color: #bada55");
+        }
+    };
+
+    /**
      * Permite requisitar a API BIPBOP
      * 
      * @param {string} query Consulta SQL-like da BIPBOP
      * @param {string} apiKey Chave de API da BIPBOP, pode ser a constante BIPBOP_FREE
      * @param {dictionary} parameters Extensão dos parâmetros do jquery.ajax
      * @see {@link http://api.jquery.com/jquery.ajax/}
-     * @function external:"jQuery.fn".bipbop
+     * @function external:"jQuery.bipbop"
      */
-    $.fn.bipbop = function (query, apiKey, parameters, protocol) {
+    $.bipbop = function (query, apiKey, parameters, protocol) {
 
         if (!protocol) {
             protocol = document.location.protocol;
-            if (protocol !== "http:" && protocol !== "https:")
+            if (protocol !== "http:" && protocol !== "https:") {
                 protocol = "http";
+            }
+        }
+
+        var adapter = "";
+        if (parameters.dataType !== undefined && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) {
+            adapter = "USING 'JSONP' ";
         }
 
         return $.ajax($.extend({
             type: "GET",
             url: protocol + "//irql.bipbop.com.br/?q="
-                    + encodeURIComponent(((typeof parameters.dataType !== "undefined" && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) ? "USING 'JSONP' " : "") + query) + "&apiKey="
+                    + encodeURIComponent(adapter + query) + "&apiKey="
                     + encodeURIComponent(apiKey),
             dataType: "xml"
         }, parameters));
@@ -53,15 +70,25 @@ BIPBOP_FREE = "6057b71263c21e4ada266c9d4d4da613";
      * Verifica se um determinado documento retornou uma exceção
      * @param {object} Documento XML que retornou da BIPBOP
      * @param {exceptionCallback} callback Executa função em caso de erro
-     * @function external:"jQuery.fn".bipbopAssert
+     * @function external:"jQuery.bipbopAssert"
      */
-    $.fn.bipbopAssert = function (ret, callback) {
-        headerException = $(ret).find("BPQL > header > exception");
+    $.bipbopAssert = function (ret, callback) {
+        var headerException = $(ret).find("BPQL > header > exception");
         if (headerException.length) {
-            callback(headerException.attr("source"), headerException.text(), parseInt(headerException.attr("code")));
+            callback(headerException.attr("source"), headerException.text(), parseInt(headerException.attr("code"), 10));
             return true;
         }
         return false;
+    };
+
+    $.fn.bipbop = function (query, apiKey, parameters, protocol) {
+        deprecated("Use jQuery directly, calling $.bipbop or jQuery.bipbop.");
+        return $.bipbop(query, apiKey, parameters, protocol);
+    };
+
+    $.fn.bipbopAssert = function (ret, callback) {
+        deprecated("Use jQuery directly, calling $.bipbopAssert or jQuery.bipbopAssert.");
+        return $.bipbopAssert(ret, callback);
     };
 
 }(jQuery));
