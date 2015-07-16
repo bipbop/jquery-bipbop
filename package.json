@@ -4,7 +4,7 @@
   "description": "Comunicação com a BIPBOP através do jQuery",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha-phantomjs/bin/mocha-phantomjs -p ./node_modules/phantomjs/bin/phantomjs test/index.html"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
     "gulp": "^3.8.11",
     "gulp-uglify": "^1.2.0",
     "minimist": "^1.1.1",
+    "mocha-phantomjs": "^3.5.4",
+    "phantomjs": "^1.9.1",
     "wrappy": "^1.0.1"
   }
 }
