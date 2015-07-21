@@ -82,12 +82,35 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
             console.log('BIPBOP-API-Deprecated :: ' + message, 'background: #222; color: #bada55');
         }
     };
+    
+    var setAutomaticLoader = function (parameters) {
+       var beforeSend = parameters.beforeSend;
+       var complete = parameters.complete;
+       var loaderUnregister = null;
+       
+       parameters.complete = function (jqXHR, textStatus) {
+           if (complete) {
+               complete(jqXHR, textStatus);
+           }
+           if (loaderUnregister) {
+               loaderUnregister();
+           }
+       };
+       
+        parameters.beforeSend = function (jqXHR, settings) {
+           loaderUnregister = $.bipbopLoader.register();
+           if (beforeSend) {
+               beforeSend(jqXHR, settings);
+           }
+       };
+    };
 
     /**
      * Configurações da BIPBOP
      */
     $.bipbopDefaults = {
-        loader: loader
+        loader: loader,
+        automaticLoader: true
     };
 
     /**
@@ -99,7 +122,9 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      * @see {@link http://api.jquery.com/jquery.ajax/}
      * @function external:"jQuery.bipbop"
      */
-    $.bipbop = function (query, apiKey, parameters, protocol) {
+    $.bipbop = function (query, apiKey, parameters) {
+
+        parameters = $.extend($.bipbopDefaults, parameters);
 
         var adapter = '';
         if (parameters.dataType !== undefined && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) {
@@ -111,13 +136,19 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
             protocol = 'https:';
         }
 
-        return $.ajax($.extend({
+        parameters = $.extend({
             type: 'GET',
             url: protocol + '//irql.bipbop.com.br/?q=' +
                     encodeURIComponent(adapter + query) + '&apiKey=' +
                     encodeURIComponent(apiKey),
             dataType: 'xml'
-        }, $.bipbopDefaults, parameters));
+        }, parameters);
+        
+        if (parameters.automaticLoader) {
+            setAutomaticLoader(parameters);
+        }
+
+        return $.ajax(parameters);
     };
 
     /**
@@ -146,7 +177,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
 
     $.fn.bipbop = function (query, apiKey, parameters, protocol) {
         deprecated('Use jQuery directly, calling $.bipbop or jQuery.bipbop.');
-        return $.bipbop(query, apiKey, parameters, protocol);
+        return $.bipbop(query, apiKey, parameters);
     };
 
     $.fn.bipbopAssert = function (ret, callback) {
