@@ -14,15 +14,80 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
  * @external "jQuery.fn"
  * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
  */
-(function($) {
+(function ($) {
+
+    /**
+     * Loader da BIPBOP
+     */
+    var loader = function () {
+        var container = $("<div />").addClass("bipbop-loader");
+
+        var floatingCirclesG = $("<div />").addClass("floatingCirclesG");
+        container.append(floatingCirclesG);
+
+        var robot = $("<div />").addClass("robo");
+        container.append(robot);
+
+        robot.append($("<div />").addClass("body"));
+        robot.append($("<div />").addClass("left-arm"));
+        robot.append($("<div />").addClass("right-arm"));
+        for (var i = 1; i <= 4; i++) {
+            robot.append($("<div />").addClass("itens item" + i.toString()));
+        }
+
+        for (var i = 1; i <= 8; i++) {
+            floatingCirclesG.append($("<div />").addClass("f_circleG frotateG_0" + i.toString()));
+        }
+
+        return container;
+    }();
+
+    $.bipbopLoader = new function () {
+        var registerCounter = 0;
+        var lastLoader = null;
+
+        var unregister = function () {
+            var used = false;
+            return function () {
+                if (used) {
+                    return false;
+                }
+                
+                used = true;
+                registerCounter += -1;
+                if (registerCounter) {
+                    return false;
+                }
+                lastLoader.remove();
+                lastLoader = null;
+                return true;
+            };
+        };
+
+        this.register = function () {
+            registerCounter += 1;
+            lastLoader = $.bipbopDefaults.loader;
+            $("body").append(lastLoader);
+            return unregister();
+        };
+
+        return this;
+    }();
 
     /**
      * Alerta de função BIPBOP deprecada
      */
-    var deprecated = function(message) {
+    var deprecated = function (message) {
         if (window.console) {
             console.log('BIPBOP-API-Deprecated :: ' + message, 'background: #222; color: #bada55');
         }
+    };
+
+    /**
+     * Configurações da BIPBOP
+     */
+    $.bipbopDefaults = {
+        loader: loader
     };
 
     /**
@@ -34,7 +99,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      * @see {@link http://api.jquery.com/jquery.ajax/}
      * @function external:"jQuery.bipbop"
      */
-    $.bipbop = function(query, apiKey, parameters, protocol) {
+    $.bipbop = function (query, apiKey, parameters, protocol) {
 
         var adapter = '';
         if (parameters.dataType !== undefined && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) {
@@ -52,7 +117,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
                     encodeURIComponent(adapter + query) + '&apiKey=' +
                     encodeURIComponent(apiKey),
             dataType: 'xml'
-        }, parameters));
+        }, $.bipbopDefaults, parameters));
     };
 
     /**
@@ -70,7 +135,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      * @param {exceptionCallback} callback Executa função em caso de erro
      * @function external:"jQuery.bipbopAssert"
      */
-    $.bipbopAssert = function(ret, callback) {
+    $.bipbopAssert = function (ret, callback) {
         var headerException = $(ret).find('BPQL > header > exception');
         if (headerException.length) {
             callback(headerException.attr('source'), headerException.text(), parseInt(headerException.attr('code'), 10));
@@ -79,12 +144,12 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
         return false;
     };
 
-    $.fn.bipbop = function(query, apiKey, parameters, protocol) {
+    $.fn.bipbop = function (query, apiKey, parameters, protocol) {
         deprecated('Use jQuery directly, calling $.bipbop or jQuery.bipbop.');
         return $.bipbop(query, apiKey, parameters, protocol);
     };
 
-    $.fn.bipbopAssert = function(ret, callback) {
+    $.fn.bipbopAssert = function (ret, callback) {
         deprecated('Use jQuery directly, calling $.bipbopAssert or jQuery.bipbopAssert.');
         return $.bipbopAssert(ret, callback);
     };

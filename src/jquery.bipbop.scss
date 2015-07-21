@@ -1,0 +1,348 @@
+//colors
+$color_crusta_approx: #f3742b;
+$color_gable_green_80_approx: rgba(30,50,58,.8);
+
+//urls
+$url_0: url(bipbop/robo.png);
+$url_1: url(bipbop/robo-body.png);
+$url_2: url(bipbop/left-arm.png);
+$url_3: url(bipbop/right-arm.png);
+$url_4: url(bipbop/icon1.png);
+$url_5: url(bipbop/icon2.png);
+$url_6: url(bipbop/icon3.png);
+$url_7: url(bipbop/icon4.png);
+
+.bipbop-loader {
+    
+    background-color: $color_gable_green_80_approx;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
+    .robo {
+        background-image: $url_0;
+        height: 79px;
+        left: 50%;
+        margin-left: -30px;
+        margin-top: -40px;
+        position: relative;
+        top: 50%;
+        width: 60px;
+        z-index: 2;
+        .body {
+            background-image: $url_1;
+            height: 24px;
+            left: 13px;
+            position: absolute;
+            top: 40px;
+            width: 34px;
+            z-index: 3;
+            animation: slide 1.5s infinite linear;
+        }
+        .left-arm {
+            background-image: $url_2;
+            background-position: 60px center;
+            background-repeat: no-repeat;
+            height: 7px;
+            left: -26px;
+            position: absolute;
+            top: 46px;
+            width: 40px;
+            z-index: 2;
+            animation: slide-left-arm 1.5s infinite linear;
+        }
+        .right-arm {
+            background-image: $url_3;
+            background-position: -15px center;
+            background-repeat: no-repeat;
+            height: 7px;
+            left: 47px;
+            position: absolute;
+            top: 46px;
+            width: 40px;
+            z-index: 2;
+            animation: slide-right-arm 1.5s infinite linear;
+        }
+    }
+    @keyframes slide {
+        0% {
+            top: 40px;
+        }
+        50% {
+            top: 36px;
+        }
+        100% {
+            top: 40px;
+        }
+    }
+    @keyframes slide-left-arm {
+        0% {
+            background-position: 40px;
+        }
+        25% {
+            background-position: 40px;
+        }
+        50% {
+            background-position: 15px;
+        }
+        100% {
+            background-position: 40px;
+        }
+    }
+    @keyframes slide-right-arm {
+        0% {
+            background-position: -15px;
+        }
+        50% {
+            background-position: -60px;
+        }
+        75% {
+            background-position: -15px;
+        }
+        100% {
+            background-position: -15px;
+        }
+    }
+    .itens {
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 20px;
+        position: absolute;
+        opacity: 0;
+        width: 20px;
+        z-index: 1;
+    }
+    .item1 {
+        background-image: $url_4;
+        left: -30px;
+        top: 40px;
+        animation: item-1 3s infinite linear;
+    }
+    @-webkit-keyframes item-1 {
+        0% {
+            opacity: 1;
+        }
+        25% {
+            left: -30px;
+            opacity: 1;
+        }
+        50% {
+            left: 15px;
+            opacity: 1;
+        }
+        51% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes item-1 {
+        0% {
+            opacity: 1;
+        }
+        25% {
+            left: -30px;
+            opacity: 1;
+        }
+        50% {
+            left: 15px;
+            opacity: 1;
+        }
+        51% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    .item2 {
+        background-image: $url_5;
+        left: 67px;
+        opacity: 1;
+        top: 36px;
+        animation: item-2 3s infinite linear;
+    }
+    @-webkit-keyframes item-2 {
+        0% {
+            left: 67px;
+            opacity: 1;
+        }
+        25% {
+            left: 24px;
+            opacity: 1;
+        }
+        26% {
+            left: 24px;
+            opacity: 0;
+        }
+        75% {
+            left: 67px;
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes item-2 {
+        0% {
+            left: 67px;
+            opacity: 1;
+        }
+        25% {
+            left: 24px;
+            opacity: 1;
+        }
+        26% {
+            left: 24px;
+            opacity: 0;
+        }
+        75% {
+            left: 67px;
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .item3 {
+        background-image: $url_6;
+        left: -30px;
+        top: 40px;
+        animation: item-3 3s infinite linear;
+    }
+
+    @keyframes item-3 {
+        0% {
+            left: -30px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        75% {
+            left: -30px;
+            opacity: 1;
+        }
+        99% {
+            left: 15px;
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    .item4 {
+        background-image: $url_7;
+        left: 67px;
+        top: 38px;
+        animation: item-4 3s infinite linear;
+    }
+
+    @keyframes item-4 {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0;
+        }
+        37% {
+            opacity: 1;
+        }
+        50% {
+            left: 67px;
+            opacity: 1;
+        }
+        75% {
+            left: 25px;
+            opacity: 1;
+        }
+        76% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    .floatingCirclesG {
+        position: absolute;
+        width: 375px;
+        height: 375px;
+        top: 50%;
+        left: 50%;
+        margin-top: -187px;
+        margin-left: -187px;
+        opacity: .8;
+        z-index: 5;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0.6);
+    }
+    .f_circleG {
+        position: absolute;
+        background-color: transparent;
+        height: 52px;
+        width: 52px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 34px;
+        animation-name: f_fadeG;
+        animation-duration: 1.2s;
+        animation-iteration-count: infinite;
+        animation-direction: linear;
+    }
+    .frotateG_01 {
+        left: 0;
+        top: 153px;
+        animation-delay: 0.45s;
+    }
+    .frotateG_02 {
+        left: 44px;
+        top: 44px;
+        animation-delay: 0.6s;
+    }
+    .frotateG_03 {
+        left: 153px;
+        top: 0;
+        animation-delay: 0.75s;
+    }
+    .frotateG_04 {
+        right: 44px;
+        top: 44px;
+        animation-delay: 0.9s;
+    }
+    .frotateG_05 {
+        right: 0;
+        top: 153px;
+        animation-delay: 1.05s;
+    }
+    .frotateG_06 {
+        right: 44px;
+        bottom: 44px;
+        animation-delay: 1.2s;
+    }
+    .frotateG_07 {
+        left: 153px;
+        bottom: 0;
+        animation-delay: 1.35s;
+    }
+    .frotateG_08 {
+        left: 44px;
+        bottom: 44px;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes f_fadeG {
+        0% {
+            background-color: $color_crusta_approx;
+        }
+        100% {
+            background-color: transparent;
+        }
+    }
+}

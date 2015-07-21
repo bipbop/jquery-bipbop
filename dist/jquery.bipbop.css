@@ -1,0 +1,348 @@
+.bipbop-loader {
+  background-color: rgba(30, 50, 58, 0.8);
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+  .bipbop-loader .robo {
+    background-image: url(bipbop/robo.png);
+    height: 79px;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: -40px;
+    position: relative;
+    top: 50%;
+    width: 60px;
+    z-index: 2; }
+    .bipbop-loader .robo .body {
+      background-image: url(bipbop/robo-body.png);
+      height: 24px;
+      left: 13px;
+      position: absolute;
+      top: 40px;
+      width: 34px;
+      z-index: 3;
+      -webkit-animation: slide 1.5s infinite linear;
+              animation: slide 1.5s infinite linear; }
+    .bipbop-loader .robo .left-arm {
+      background-image: url(bipbop/left-arm.png);
+      background-position: 60px center;
+      background-repeat: no-repeat;
+      height: 7px;
+      left: -26px;
+      position: absolute;
+      top: 46px;
+      width: 40px;
+      z-index: 2;
+      -webkit-animation: slide-left-arm 1.5s infinite linear;
+              animation: slide-left-arm 1.5s infinite linear; }
+    .bipbop-loader .robo .right-arm {
+      background-image: url(bipbop/right-arm.png);
+      background-position: -15px center;
+      background-repeat: no-repeat;
+      height: 7px;
+      left: 47px;
+      position: absolute;
+      top: 46px;
+      width: 40px;
+      z-index: 2;
+      -webkit-animation: slide-right-arm 1.5s infinite linear;
+              animation: slide-right-arm 1.5s infinite linear; }
+
+@-webkit-keyframes slide {
+  0% {
+    top: 40px; }
+  50% {
+    top: 36px; }
+  100% {
+    top: 40px; } }
+
+@keyframes slide {
+  0% {
+    top: 40px; }
+  50% {
+    top: 36px; }
+  100% {
+    top: 40px; } }
+
+@-webkit-keyframes slide-left-arm {
+  0% {
+    background-position: 40px; }
+  25% {
+    background-position: 40px; }
+  50% {
+    background-position: 15px; }
+  100% {
+    background-position: 40px; } }
+
+@keyframes slide-left-arm {
+  0% {
+    background-position: 40px; }
+  25% {
+    background-position: 40px; }
+  50% {
+    background-position: 15px; }
+  100% {
+    background-position: 40px; } }
+
+@-webkit-keyframes slide-right-arm {
+  0% {
+    background-position: -15px; }
+  50% {
+    background-position: -60px; }
+  75% {
+    background-position: -15px; }
+  100% {
+    background-position: -15px; } }
+
+@keyframes slide-right-arm {
+  0% {
+    background-position: -15px; }
+  50% {
+    background-position: -60px; }
+  75% {
+    background-position: -15px; }
+  100% {
+    background-position: -15px; } }
+  .bipbop-loader .itens {
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 20px;
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    z-index: 1; }
+  .bipbop-loader .item1 {
+    background-image: url(bipbop/icon1.png);
+    left: -30px;
+    top: 40px;
+    -webkit-animation: item-1 3s infinite linear;
+            animation: item-1 3s infinite linear; }
+
+@-webkit-keyframes item-1 {
+  0% {
+    opacity: 1; }
+  25% {
+    left: -30px;
+    opacity: 1; }
+  50% {
+    left: 15px;
+    opacity: 1; }
+  51% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes item-1 {
+  0% {
+    opacity: 1; }
+  25% {
+    left: -30px;
+    opacity: 1; }
+  50% {
+    left: 15px;
+    opacity: 1; }
+  51% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+  .bipbop-loader .item2 {
+    background-image: url(bipbop/icon2.png);
+    left: 67px;
+    opacity: 1;
+    top: 36px;
+    -webkit-animation: item-2 3s infinite linear;
+            animation: item-2 3s infinite linear; }
+
+@-webkit-keyframes item-2 {
+  0% {
+    left: 67px;
+    opacity: 1; }
+  25% {
+    left: 24px;
+    opacity: 1; }
+  26% {
+    left: 24px;
+    opacity: 0; }
+  75% {
+    left: 67px;
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes item-2 {
+  0% {
+    left: 67px;
+    opacity: 1; }
+  25% {
+    left: 24px;
+    opacity: 1; }
+  26% {
+    left: 24px;
+    opacity: 0; }
+  75% {
+    left: 67px;
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+  .bipbop-loader .item3 {
+    background-image: url(bipbop/icon3.png);
+    left: -30px;
+    top: 40px;
+    -webkit-animation: item-3 3s infinite linear;
+            animation: item-3 3s infinite linear; }
+
+@-webkit-keyframes item-3 {
+  0% {
+    left: -30px;
+    opacity: 0; }
+  50% {
+    opacity: 0; }
+  75% {
+    left: -30px;
+    opacity: 1; }
+  99% {
+    left: 15px;
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes item-3 {
+  0% {
+    left: -30px;
+    opacity: 0; }
+  50% {
+    opacity: 0; }
+  75% {
+    left: -30px;
+    opacity: 1; }
+  99% {
+    left: 15px;
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+  .bipbop-loader .item4 {
+    background-image: url(bipbop/icon4.png);
+    left: 67px;
+    top: 38px;
+    -webkit-animation: item-4 3s infinite linear;
+            animation: item-4 3s infinite linear; }
+
+@-webkit-keyframes item-4 {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 0; }
+  37% {
+    opacity: 1; }
+  50% {
+    left: 67px;
+    opacity: 1; }
+  75% {
+    left: 25px;
+    opacity: 1; }
+  76% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes item-4 {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 0; }
+  37% {
+    opacity: 1; }
+  50% {
+    left: 67px;
+    opacity: 1; }
+  75% {
+    left: 25px;
+    opacity: 1; }
+  76% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+  .bipbop-loader .floatingCirclesG {
+    position: absolute;
+    width: 375px;
+    height: 375px;
+    top: 50%;
+    left: 50%;
+    margin-top: -187px;
+    margin-left: -187px;
+    opacity: .8;
+    z-index: 5;
+    -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+            transform: scale(0.6); }
+  .bipbop-loader .f_circleG {
+    position: absolute;
+    background-color: transparent;
+    height: 52px;
+    width: 52px;
+    border-radius: 34px;
+    -webkit-animation-name: f_fadeG;
+            animation-name: f_fadeG;
+    -webkit-animation-duration: 1.2s;
+            animation-duration: 1.2s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+            animation-direction: linear; }
+  .bipbop-loader .frotateG_01 {
+    left: 0;
+    top: 153px;
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s; }
+  .bipbop-loader .frotateG_02 {
+    left: 44px;
+    top: 44px;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
+  .bipbop-loader .frotateG_03 {
+    left: 153px;
+    top: 0;
+    -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s; }
+  .bipbop-loader .frotateG_04 {
+    right: 44px;
+    top: 44px;
+    -webkit-animation-delay: 0.9s;
+            animation-delay: 0.9s; }
+  .bipbop-loader .frotateG_05 {
+    right: 0;
+    top: 153px;
+    -webkit-animation-delay: 1.05s;
+            animation-delay: 1.05s; }
+  .bipbop-loader .frotateG_06 {
+    right: 44px;
+    bottom: 44px;
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s; }
+  .bipbop-loader .frotateG_07 {
+    left: 153px;
+    bottom: 0;
+    -webkit-animation-delay: 1.35s;
+            animation-delay: 1.35s; }
+  .bipbop-loader .frotateG_08 {
+    left: 44px;
+    bottom: 44px;
+    -webkit-animation-delay: 1.5s;
+            animation-delay: 1.5s; }
+
+@-webkit-keyframes f_fadeG {
+  0% {
+    background-color: #f3742b; }
+  100% {
+    background-color: transparent; } }
+
+@keyframes f_fadeG {
+  0% {
+    background-color: #f3742b; }
+  100% {
+    background-color: transparent; } }
