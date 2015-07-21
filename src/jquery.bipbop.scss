@@ -123,25 +123,6 @@ $url_7: url(bipbop/icon4.png);
         top: 40px;
         animation: item-1 3s infinite linear;
     }
-    @-webkit-keyframes item-1 {
-        0% {
-            opacity: 1;
-        }
-        25% {
-            left: -30px;
-            opacity: 1;
-        }
-        50% {
-            left: 15px;
-            opacity: 1;
-        }
-        51% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
 
     @keyframes item-1 {
         0% {
@@ -168,27 +149,6 @@ $url_7: url(bipbop/icon4.png);
         opacity: 1;
         top: 36px;
         animation: item-2 3s infinite linear;
-    }
-    @-webkit-keyframes item-2 {
-        0% {
-            left: 67px;
-            opacity: 1;
-        }
-        25% {
-            left: 24px;
-            opacity: 1;
-        }
-        26% {
-            left: 24px;
-            opacity: 0;
-        }
-        75% {
-            left: 67px;
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
     }
 
     @keyframes item-2 {
