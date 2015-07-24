@@ -4,7 +4,7 @@
   "description": "Comunicação com a BIPBOP através do jQuery",
   "main": "gulpfile.js",
   "scripts": {
-    "postinstall": "bower cache clean && bower install && gulp",
+    "postinstall": "bower install && gulp",
     "test": "mocha-phantomjs test/index.html"
   },
   "repository": {
