@@ -79,7 +79,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      */
     var deprecated = function (message) {
         if (window.console) {
-            console.log('BIPBOP-API-Deprecated :: ' + message, 'background: #222; color: #bada55');
+            console.log('%c BIPBOP-API-Deprecated :: ' + message, 'background: #222; color: #bada55');
         }
     };
     
@@ -184,5 +184,5 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
         deprecated('Use jQuery directly, calling $.bipbopAssert or jQuery.bipbopAssert.');
         return $.bipbopAssert(ret, callback);
     };
-
+    
 }(jQuery));
