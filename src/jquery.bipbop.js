@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Chave de API do plano gratuito, pode ser modificado no servidor.
  * @constant
@@ -15,27 +13,29 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
  * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
  */
 (function ($) {
+    'use strict';
 
     /**
      * Loader da BIPBOP
      */
     var loader = function () {
-        var container = $("<div />").addClass("bipbop-loader");
+        var container = $("<div />").addClass("bipbop-loader"),
+            floatingCirclesG = $("<div />").addClass("floatingCirclesG"),
+            robot = $("<div />").addClass("robo");
 
-        var floatingCirclesG = $("<div />").addClass("floatingCirclesG");
         container.append(floatingCirclesG);
-
-        var robot = $("<div />").addClass("robo");
         container.append(robot);
-
+        
         robot.append($("<div />").addClass("body"));
         robot.append($("<div />").addClass("left-arm"));
         robot.append($("<div />").addClass("right-arm"));
-        for (var i = 1; i <= 4; i++) {
+
+        var i = null;
+        for (i = 1; i <= 4; i++) {
             robot.append($("<div />").addClass("itens item" + i.toString()));
         }
 
-        for (var i = 1; i <= 8; i++) {
+        for (i = 1; i <= 8; i++) {
             floatingCirclesG.append($("<div />").addClass("f_circleG frotateG_0" + i.toString()));
         }
 
@@ -123,8 +123,8 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      * @function external:"jQuery.bipbop"
      */
     $.bipbop = function (query, apiKey, parameters) {
-
-        parameters = $.extend($.bipbopDefaults, parameters);
+        apiKey = apiKey || window.BIPBOP_FREE;
+        parameters = $.extend({}, $.bipbopDefaults, parameters);
 
         var adapter = '';
         if (parameters.dataType !== undefined && parameters.dataType.match(/(\s|^)jsonp(\s|$)/gi)) {
