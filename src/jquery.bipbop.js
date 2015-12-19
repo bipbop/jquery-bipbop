@@ -7,6 +7,83 @@
 window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
 
 /**
+ * BIPBOP Goodies
+ * @type Dictionary
+ */
+window.bipbop = {
+    /**
+     * Tempo de Reconexão
+     * @type Number
+     */
+    reconnectIn: 3000,
+    /**
+     * BIPBOP WebSocket
+     * você receber a comunicação de PUSH.
+     * @return {function} Método de PUSH
+     */
+    webSocket: function (apiKey, onMessage) {
+
+        var queue = [];
+        var ws = null;
+
+        /**
+         * Encaminha dados pelo WebSocket
+         * @param {mixed} data
+         * @returns {Boolean}
+         */
+        var send = function (data) {
+            if (ws && ws.readyState === 1) {
+                try {
+                    ws.send(JSON.stringify(data));
+                    return true;
+                } catch (e) {
+
+                }
+            }
+            queue.push(data);
+            return false;
+        };
+
+        /**
+         * Conecta no socket
+         * @returns {undefined}
+         */
+        var connect = function () {
+            try {
+                ws = new WebSocket("wss://irql.bipbop.com.br/ws/");
+            } catch (e) {
+                setTimeout(connect, window.bipbop.reconnectIn);
+                return; /* voids */
+            }
+            
+            ws.onmessage = onMessage;
+
+            ws.onopen = function () {
+                /* Hou! Hou! Hou! */
+                ws.send(JSON.stringify(apiKey));
+                while (queue.length) {
+                    send(queue.shift());
+                }
+            };
+
+            ws.onerror = function () {
+                ws.close();
+            };
+
+            ws.onclose = function () {
+                setTimeout(connect, window.bipbop.reconnectIn);
+            };
+        };
+
+        connect();
+
+        return function (data) {
+            send(data);
+        };
+    }
+};
+
+/**
  * O Plugin jQuery da BIPBOP
  *
  * @external "jQuery.fn"
@@ -20,12 +97,12 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
      */
     var loader = function () {
         var container = $("<div />").addClass("bipbop-loader"),
-            floatingCirclesG = $("<div />").addClass("floatingCirclesG"),
-            robot = $("<div />").addClass("robo");
+                floatingCirclesG = $("<div />").addClass("floatingCirclesG"),
+                robot = $("<div />").addClass("robo");
 
         container.append(floatingCirclesG);
         container.append(robot);
-        
+
         robot.append($("<div />").addClass("body"));
         robot.append($("<div />").addClass("left-arm"));
         robot.append($("<div />").addClass("right-arm"));
@@ -52,7 +129,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
                 if (used) {
                     return false;
                 }
-                
+
                 used = true;
                 registerCounter += -1;
                 if (registerCounter) {
@@ -82,27 +159,27 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
             console.log('%c BIPBOP-API-Deprecated :: ' + message, 'background: #222; color: #bada55');
         }
     };
-    
+
     var setAutomaticLoader = function (parameters) {
-       var beforeSend = parameters.beforeSend;
-       var complete = parameters.complete;
-       var loaderUnregister = null;
-       
-       parameters.complete = function (jqXHR, textStatus) {
-           if (complete) {
-               complete(jqXHR, textStatus);
-           }
-           if (loaderUnregister) {
-               loaderUnregister();
-           }
-       };
-       
+        var beforeSend = parameters.beforeSend;
+        var complete = parameters.complete;
+        var loaderUnregister = null;
+
+        parameters.complete = function (jqXHR, textStatus) {
+            if (complete) {
+                complete(jqXHR, textStatus);
+            }
+            if (loaderUnregister) {
+                loaderUnregister();
+            }
+        };
+
         parameters.beforeSend = function (jqXHR, settings) {
-           loaderUnregister = $.bipbopLoader.register();
-           if (beforeSend) {
-               beforeSend(jqXHR, settings);
-           }
-       };
+            loaderUnregister = $.bipbopLoader.register();
+            if (beforeSend) {
+                beforeSend(jqXHR, settings);
+            }
+        };
     };
 
     /**
@@ -143,7 +220,7 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
                     encodeURIComponent(apiKey),
             dataType: 'xml'
         }, parameters);
-        
+
         if (parameters.automaticLoader) {
             setAutomaticLoader(parameters);
         }
@@ -184,5 +261,5 @@ window.BIPBOP_FREE = '6057b71263c21e4ada266c9d4d4da613';
         deprecated('Use jQuery directly, calling $.bipbopAssert or jQuery.bipbopAssert.');
         return $.bipbopAssert(ret, callback);
     };
-    
+
 }(jQuery));
