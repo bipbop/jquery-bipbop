@@ -86,7 +86,7 @@
             }
 
             ws.onmessage = function (event) {
-                if (onMessage)
+                if (onMessage && event.data)
                     onMessage(JSON.parse(event.data), event);
             };
 
@@ -287,11 +287,12 @@
             $.bipbopAssert = function (ret, callback) {
                 var headerException = $(ret).find('BPQL > header > exception');
                 if (headerException.length) {
-                    callback(headerException.attr('source'), headerException.text(), parseInt(headerException.attr('code'), 10));
+                    callback(headerException.attr('source'), headerException.text(), parseInt(headerException.attr('code'), 10), headerException.attr('push') === "true");
                     return true;
                 }
                 return false;
             };
+            
             $.fn.bipbop = function (query, apiKey, parameters, protocol) {
                 deprecated('Use jQuery directly, calling $.bipbop or jQuery.bipbop.');
                 return $.bipbop(query, apiKey, parameters);
