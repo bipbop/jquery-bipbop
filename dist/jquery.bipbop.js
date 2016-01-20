@@ -97,7 +97,7 @@
             } catch (e) {
                 console.log("ERROR: " + e);
                 errorMessage('WebSocketFailure', e);
-                setTimeout(start, window.bipbop.reconnectIn);
+                setTimeout(start, window.bipbop.reconnectAfter);
                 return; /* voids */
             }
 
@@ -124,12 +124,12 @@
             };
             ws.onclose = function () {
                 errorMessage('WebSocketDisconection', Array.from(arguments));
-                setTimeout(start, window.bipbop.reconnectIn);
+                setTimeout(start, window.bipbop.reconnectAfter);
             };
         };
-        
+
         start();
-        
+
         return send;
     };
 
@@ -140,13 +140,19 @@
     window.bipbop = {
         /**
          * BIPBOP WebSocket Address
+         * @type {string}
          */
         websocketAddress: "wss://irql.bipbop.com.br/ws",
+        /**
+         * BIPBOP WebSocket Address
+         * @type {string}
+         */
+        webserviceAddress: "https://irql.bipbop.com.br/",
         /**
          * Tempo de Reconexão
          * @type Number
          */
-        reconnectIn: 3000,
+        reconnectAfter: 3000,
         /**
          * Conecta na BIPBOP ;)
          * @param {string} apiKey
@@ -274,7 +280,7 @@
 
                 parameters = $.extend({
                     type: 'GET',
-                    url: protocol + '//irql.bipbop.com.br/?q=' +
+                    url: window.bipbop.webserviceAddress +
                             encodeURIComponent(adapter + query) + '&apiKey=' +
                             encodeURIComponent(apiKey),
                     dataType: 'xml'
@@ -308,7 +314,7 @@
                 }
                 return false;
             };
-            
+
             $.fn.bipbop = function (query, apiKey, parameters, protocol) {
                 deprecated('Use jQuery directly, calling $.bipbop or jQuery.bipbop.');
                 return $.bipbop(query, apiKey, parameters);
@@ -319,4 +325,4 @@
             };
         }(jQuery));
     }
-})();
+}());
