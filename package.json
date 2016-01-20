@@ -1,6 +1,6 @@
 {
   "name": "jquery.bipbop",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Comunicação com a BIPBOP através do jQuery",
   "main": "gulpfile.js",
   "scripts": {
