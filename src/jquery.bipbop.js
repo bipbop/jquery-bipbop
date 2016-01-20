@@ -257,11 +257,6 @@
                     adapter = "USING 'JSONP' ";
                 }
 
-                var protocol = 'http:';
-                if (location.protocol === 'https:') {
-                    protocol = 'https:';
-                }
-
                 parameters = $.extend({
                     type: 'GET',
                     url: window.bipbop.webserviceAddress +
