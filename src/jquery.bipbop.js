@@ -259,7 +259,7 @@
 
                 parameters = $.extend({
                     type: 'GET',
-                    url: window.bipbop.webserviceAddress + '?' +
+                    url: window.bipbop.webserviceAddress + '?q=' +
                             encodeURIComponent(adapter + query) + '&apiKey=' +
                             encodeURIComponent(apiKey),
                     dataType: 'xml'
