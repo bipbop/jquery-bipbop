@@ -1,8 +1,6 @@
 BIPBOP JS
 ==========================================
 
-[![Build Status](https://travis-ci.org/bipbop/jquery.bipbop.svg)](https://travis-ci.org/bipbop/jquery.bipbop)
-
 [BIPBOP](https://www.bipbop.com.br/) é um Web Service onde você pode sincronizar informações de seu software com outros portais da internet. Oferecemos diversas ferramentas para consulta de CEP, CPF, CNPJ, influência social de uma pessoa na internet, geolocalização e poder aquisitivo.
 
 Através do BIPBOP JS você pode fazer consultas via AJAX usando a API BIPBOP. É a forma mais simples de poder:
