@@ -288,7 +288,7 @@
             $.bipbopAssert = function (ret, callback) {
                 var headerException = $(ret).find('BPQL > header > exception');
                 if (headerException.length) {
-                    callback(headerException.attr('source'), headerException.text(), parseInt(headerException.attr('code'), 10), headerException.attr('push') === "true");
+                    callback(headerException.attr('source'), headerException.text(), parseInt(headerException.attr('code'), 10), headerException.attr('push') === "true", ret);
                     return true;
                 }
                 return false;
