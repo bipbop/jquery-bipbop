@@ -1,115 +1,67 @@
-BIPBOP JS
-==========================================
+# bipbop@1.0.6
+ [![npm version](https://badge.fury.io/js/bipbop.svg)](https://npmjs.org/package/bipbop)  [![build status](https://travis-ci.org/bipbop/generator-bipbop-js-tdd.svg)](https://travis-ci.org/bipbop/generator-bipbop-js-tdd)  [![coverage status](https://coveralls.io/repos/bipbop/generator-bipbop-js-tdd/badge.svg)](https://coveralls.io/github/bipbop/generator-bipbop-js-tdd)  [![dependency status](https://david-dm.org/bipbop/generator-bipbop-js-tdd.svg?theme=shields.io)](https://david-dm.org/bipbop/generator-bipbop-js-tdd)  [![devDependency status](https://david-dm.org/bipbop/generator-bipbop-js-tdd/dev-status.svg)](https://david-dm.org/bipbop/generator-bipbop-js-tdd#info=devDependencies)  [![Gitter](https://badges.gitter.im/bipbop/generator-bipbop-js-tdd.svg)](https://gitter.im/bipbop/generator-bipbop-js-tdd) 
 
-[BIPBOP](https://www.bipbop.com.br/) é um Web Service onde você pode sincronizar informações de seu software com outros portais da internet. Oferecemos diversas ferramentas para consulta de CEP, CPF, CNPJ, influência social de uma pessoa na internet, geolocalização e poder aquisitivo.
+Library to make requests to BIPBOP simple again.
 
-Através do BIPBOP JS você pode fazer consultas via AJAX usando a API BIPBOP. É a forma mais simples de poder:
 
-- Validar a existência e formatação de um CPF/CNPJ.
-- Acessar qualquer API do BIPBOP.
-- Melhorar a usabilidade do seu software, poupando o usuário de digitar o nome completo diversas vezes.
+## Installation
+Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
-## TL;DR 
-
-Cole o código abaixo no HTML da sua aplicação:
-
-```HTML
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//irql.bipbop.com.br/js/jquery.bipbop.min.js"></script>
+```sh
+npm install bipbop --save
 ```
 
-## Configuração
+This package is provided in these module formats:
 
-Instale o [jQuery](https://jquery.com/) ou copie o código abaixo no HTML da sua aplicação.
-```HTML
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-```
+- CommonJS
 
-Instale o BIPBOP JS ou copie o código abaixo no HTML da sua aplicação.
-```HTML
-<script src="//irql.bipbop.com.br/js/jquery.bipbop.min.js"></script>
-```
 
-## Exemplos de uso
 
-### Busca por CEP
 
-No exemplo abaixo, efetuamos uma busca pelos dados do CEP `01002020`. O BIPBOP JS retorna as informações `logradouro`, `bairro`, `cidade`, `uf` e `cep`.
+## Dependencies
 
-```HTML
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <title>Buscando informações a partir do CEP</title>
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="//irql.bipbop.com.br/js/jquery.bipbop.min.js"></script>
-  <script>
-    $(document).bipbop("SELECT FROM 'BIPBOPJS'.'CEP'", BIPBOP_FREE, {
-      data: {
-        "cep": "01002020"
-      },
-        
-      success: function (ret) {
-        $("#local #logradouro").text($(ret).find("body logradouro").text());
-        $("#local #bairro").text($(ret).find("body bairro").text());
-        $("#local #cidade").text($(ret).find("body cidade").text());
-        $("#local #uf").text($(ret).find("body uf").text());
-        $("#local #cep").text($(ret).find("body cep").text());
-      }
-    });
-  </script>
-</head>
-<body>
-  <div id="local">
-    Logradouro: <span id="logradouro">N/A</span>
-    Bairro: <span id="bairro">N/A</span>
-    Cidade: <span id="cidade">N/A</span>
-    UF: <span id="uf">N/A</span>
-    CEP: <span id="cep">N/A</span>
-  </div>
-</body>
-</html>
-```
+- [gulp-gh-pages](): 
+- [gulp-jsdoc3](https://github.com/mlucool/gulp-jsdoc3): gulp integration for jsdoc3 cli
+- [jquery](https://github.com/jquery/jquery): JavaScript library for DOM operations
+- [one-time](https://github.com/unshiftio/one-time): Run the supplied function exactly one time (once)
 
-### Busca do nome por CPF/CPNJ
 
-No exemplo abaixo, efetuamos uma busca pelos dados do CPNJ `06990590000123`. O BIPBOP JS retorna a razão social ou o nome completo.
+## Dev Dependencies
 
-```HTML
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <title>Buscando informações a partir do CPF/CNPJ</title>
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="//irql.bipbop.com.br/js/jquery.bipbop.min.js"></script>
-  <script>
-    $(document).bipbop("SELECT FROM 'BIPBOPJS'.'CPFCNPJ'", BIPBOP_FREE, {
-      data: {
-        "documento": "06990590000123"
-      },
-      
-      success: function (ret) {
-        $("#bio #nome").text($(ret).find("body nome").text());
-      }
-    });
-  </script>
-</head>
-<body>
-  <div id="bio">
-    Nome: <span id="nome">N/A</span>
-  </div>
-</body>
-</html>
-```
+- [autoprefixer](): 
+- [buble](https://github.com/Rich-Harris/buble): The blazing fast, batteries-included ES2015 compiler
+- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
+- [coveralls](https://github.com/nickmerwin/node-coveralls): takes json-cov output into stdin and POSTs to coveralls.io
+- [eslint](): 
+- [eslint-config-airbnb-base](https://github.com/airbnb/javascript): Airbnb's base JS ESLint config, following our styleguide
+- [eslint-config-airbnb-es5](https://github.com/1hella/eslint-config-airbnb-es5): Unofficial Airbnb ESLint config, following their ES5 style guide
+- [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import): Import with sanity.
+- [gulp](): 
+- [karma](https://github.com/karma-runner/karma): Spectacular Test Runner for JavaScript.
+- [karma-chai](https://github.com/xdissent/karma-chai): Chai for Karma
+- [karma-coverage](https://github.com/karma-runner/karma-coverage): A Karma plugin. Generate code coverage.
+- [karma-istanbul-preprocessor](https://github.com/textioHQ/karma-istanbul-preprocessor): Instrument code with istanbul without causing conflict with karma-coverage
+- [karma-mocha](https://github.com/karma-runner/karma-mocha): A Karma plugin. Adapter for Mocha testing framework.
+- [karma-phantomjs-launcher](https://github.com/karma-runner/karma-phantomjs-launcher): A Karma plugin. Launcher for PhantomJS.
+- [karma-phantomjs2-launcher](https://github.com/gskachkov/karma-phantomjs2-launcher): A Karma plugin. Launcher for PhantomJS 2. Slightly changed karma-phantomjs-launcher plugin.ß
+- [karma-remap-istanbul](https://github.com/marcules/karma-remap-istanbul): Call remap-istanbul as a karma reporter, enabling remapped reports on watch
+- [karma-rollup-plugin](https://github.com/TrySound/karma-rollup-plugin): A Karma preprocessor plugin to offer seamless integration with Rollup
+- [karma-rollup-preprocessor](https://github.com/jlmakes/karma-rollup-preprocessor): Karma preprocessor to bundle ES2015 modules using Rollup
+- [lodash](): 
+- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework
+- [node-sass](https://github.com/sass/node-sass): Wrapper around libsass
+- [phantomjs2](https://github.com/zeevl/phantomjs2): Headless WebKit with JS API
+- [postcss-base64](): 
+- [postcss-scss](): 
+- [rollup](): 
+- [rollup-plugin-buble](): 
+- [rollup-plugin-cleanup](https://github.com/aMarCruz/rollup-plugin-cleanup): Rollup plugin to trim trailing spaces, compact empty lines, and normalize line endings
+- [rollup-plugin-commonjs](): 
+- [rollup-plugin-istanbul](https://github.com/artberri/rollup-plugin-istanbul): Seamless integration between Rollup and Istanbul.
+- [rollup-plugin-license](https://github.com/mjeanroy/rollup-plugin-license): Rollup plugin to add license banner to the final bundle and output third party licenses
+- [rollup-plugin-node-resolve](): 
+- [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss): Seamless integration between Rollup and PostCSS
 
-### Desabilitando o loader BIPBOP
 
-```HTML
-<script type="text/javascript">
-  $.bipbopDefaults.automaticLoader = false;
-</script>
-```
-
-## Mais informações
-
- - [Documentação completa BIPBOP JS](https://api.bipbop.com.br/documentation/)
+## License
+[MIT]()
