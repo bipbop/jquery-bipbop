@@ -20,14 +20,15 @@ This package is provided in these module formats:
 
 ## Dependencies
 
-- [gulp-gh-pages](): 
-- [gulp-jsdoc3](https://github.com/mlucool/gulp-jsdoc3): gulp integration for jsdoc3 cli
 - [jquery](https://github.com/jquery/jquery): JavaScript library for DOM operations
 - [one-time](https://github.com/unshiftio/one-time): Run the supplied function exactly one time (once)
+- [zepto](): 
 
 
 ## Dev Dependencies
 
+- [gulp-gh-pages](): 
+- [gulp-jsdoc3](https://github.com/mlucool/gulp-jsdoc3): gulp integration for jsdoc3 cli
 - [autoprefixer](): 
 - [buble](https://github.com/Rich-Harris/buble): The blazing fast, batteries-included ES2015 compiler
 - [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
@@ -40,6 +41,7 @@ This package is provided in these module formats:
 - [karma](https://github.com/karma-runner/karma): Spectacular Test Runner for JavaScript.
 - [karma-chai](https://github.com/xdissent/karma-chai): Chai for Karma
 - [karma-coverage](https://github.com/karma-runner/karma-coverage): A Karma plugin. Generate code coverage.
+- [karma-firefox-launcher](https://github.com/karma-runner/karma-firefox-launcher): A Karma plugin. Launcher for Firefox.
 - [karma-istanbul-preprocessor](https://github.com/textioHQ/karma-istanbul-preprocessor): Instrument code with istanbul without causing conflict with karma-coverage
 - [karma-mocha](https://github.com/karma-runner/karma-mocha): A Karma plugin. Adapter for Mocha testing framework.
 - [karma-phantomjs-launcher](https://github.com/karma-runner/karma-phantomjs-launcher): A Karma plugin. Launcher for PhantomJS.

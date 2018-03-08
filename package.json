@@ -6,8 +6,6 @@
     "< 1%"
   ],
   "dependencies": {
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-jsdoc3": "^1.0.1",
     "jquery": "^3.3.1",
     "one-time": "^0.0.4",
     "zepto": "^1.2.0"
@@ -20,6 +18,8 @@
   "deprecated": false,
   "description": "Library to make requests to BIPBOP simple again.",
   "devDependencies": {
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-jsdoc3": "^1.0.1",
     "autoprefixer": "^8.1.0",
     "buble": "^0.19.3",
     "chai": "^4.1.2",
