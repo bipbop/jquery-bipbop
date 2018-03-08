@@ -35,10 +35,10 @@ gulp.task('jsdoc', ['pack:dist'], () => gulp
 gulp.task('deploy', ['jsdoc'], () => gulp.src('./docs/gen/**/*')
   .pipe(ghPages()));
 
-gulp.task('pack:test', () => rollupBundle(rollupGenerator({ istanbul: true }))
+gulp.task('pack:test', () => rollupBundle(rollupGenerator({ browser: true, istanbul: true }))
   .then(customizedBundler('umd', path.join(__dirname, 'tests', 'coverage', 'index.js'))));
 gulp.task('pack:cjs', () => rollupBundle(rollupGenerator()).then(customizedBundler('cjs', path.join(__dirname, pkg.main))));
-gulp.task('pack:umd', () => rollupBundle(rollupGenerator()).then(customizedBundler('umd', path.join(__dirname, pkg.browser))));
+gulp.task('pack:umd', () => rollupBundle(rollupGenerator({ browser: true })).then(customizedBundler('umd', path.join(__dirname, pkg.browser))));
 
 gulp.task('pack:dist', ['pack:umd', 'pack:cjs']);
 
