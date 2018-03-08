@@ -2,6 +2,9 @@
 coverage/
 docs/
 
+./index.js
+./browser.js
+
 # Logs
 logs
 *.log
