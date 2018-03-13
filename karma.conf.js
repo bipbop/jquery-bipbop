@@ -20,7 +20,7 @@ module.exports = function runTests(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     browsers: [
-      'Firefox',
+      //'Firefox',
       'PhantomJS2',
     ],
     singleRun: true,
