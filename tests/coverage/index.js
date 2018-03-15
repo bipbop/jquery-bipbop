@@ -1,7 +1,7 @@
 /**
  * Bundle of bipbop
- * Generated: 2018-03-07
- * Version: 1.0.6
+ * Generated: 2018-03-08
+ * Version: 1.0.7
  * Dependencies:
  *
  * object-assign -- 4.1.1
