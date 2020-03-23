@@ -40,7 +40,7 @@ module.exports = function configuration(confs = {}) {
     cleanup({
       exclude: './lib',
     }),
-    license({ banner: { file: path.join(__dirname, '..', 'banner.txt') } }),
+    license({ banner: { content: { file: path.join(__dirname, '..', 'banner.txt') } } }),
   ];
 
   if (confs.istanbul) {
