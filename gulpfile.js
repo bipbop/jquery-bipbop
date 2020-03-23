@@ -2,8 +2,6 @@ const _ = require('lodash');
 const path = require('path');
 const gulp = require('gulp');
 const { rollup } = require('rollup');
-const { Server } = require('karma');
-const ghPages = require('gulp-gh-pages');
 const jsdoc = require('gulp-jsdoc3');
 
 const rollupGenerator = require('./utils/rollup-generator');
@@ -36,19 +34,5 @@ gulp.task('jsdoc', gulp.series('pack:dist', () => gulp
   .src(['README.md', './index.js'], { read: false })
   .pipe(jsdoc())));
 
-gulp.task('deploy', gulp.series('jsdoc', () => gulp.src('./docs/gen/**/*')
-  .pipe(ghPages())));
-
-gulp.task('pack:test', () => rollupBundle(rollupGenerator({ browser: true, istanbul: true }))
-  .then(customizedBundler('umd', path.join(__dirname, 'tests', 'coverage', 'index.js'))));
-
-
-gulp.task('server', gulp.series('pack:test', cb => new Server({
-  configFile: `${__dirname}/karma.conf.js`,
-  singleRun: false,
-  autoWatch: true,
-}, cb).start()));
-
-gulp.task('listener', () => gulp.watch('lib/**/*.js', gulp.series('pack:test')));
-gulp.task('watch', gulp.series('server', 'listener'));
-gulp.task('default', gulp.series('pack:test', 'pack:dist'));
+gulp.task('deploy', gulp.series('pack:dist'));
+gulp.task('default', gulp.series('pack:dist'));

@@ -1,9 +1,6 @@
-const path = require('path');
-const buble = require('rollup-plugin-buble');
-const license = require('rollup-plugin-license');
-const resolve = require('rollup-plugin-node-resolve');
+const buble = require('@rollup/plugin-buble');
+const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
-const istanbul = require('rollup-plugin-istanbul');
 const postcss = require('rollup-plugin-postcss');
 const cleanup = require('rollup-plugin-cleanup');
 
@@ -40,12 +37,7 @@ module.exports = function configuration(confs = {}) {
     cleanup({
       exclude: './lib',
     }),
-    license({ banner: { content: { file: path.join(__dirname, '..', 'banner.txt') } } }),
   ];
-
-  if (confs.istanbul) {
-    plugins.push(istanbul({ exclude: ['tests/**/*', 'node_modules/**/*'] }));
-  }
 
   return {
     external: ['jquery'],
