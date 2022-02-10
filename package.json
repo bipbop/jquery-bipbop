@@ -27,7 +27,7 @@
     "gulp": "^4.0.2",
     "gulp-jsdoc3": "^2.0.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "object-assign": "^4.1.1",
     "postcss-base64": "^0.7.1",
     "postcss-scss": "^2.0.0",
